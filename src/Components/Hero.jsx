@@ -1,10 +1,12 @@
-import React from 'react'
-import BgSlate from './assets/bg-slate.png'
+import React, { useContext } from 'react'
+import BgSlate from '../assets/bg-slate.png'
 import BlackCoffeeImg from '../assets/black.png'
 import Navbar from './Navbar'
 import {motion} from "framer-motion"
-import { FaFacebook, FaInstagram, FaTwitch } from 'react-icons/fa'
-import { FaTwitter, FaX, FaXTwitter } from 'react-icons/fa6'
+import { FaFacebook, FaInstagram, } from 'react-icons/fa'
+import { FaXTwitter } from 'react-icons/fa6'
+import { AppContext } from '../Context/AppContext'
+
 
 const bgImage = {
     backgroundImage : `url(${BgSlate})`,
@@ -15,10 +17,11 @@ const bgImage = {
 
 function Hero() {
 
+    const {hamburger} = useContext(AppContext);
     
   return (
     <div style={bgImage}>
-        <section className='min-h-[750px] w-full'>
+        <section className='min-h-[750px]  w-full'>
             <div className='container mx-auto'>
 
                 <Navbar/>
@@ -102,21 +105,24 @@ function Hero() {
 
             </div>
 
-            <motion.div
-            initial={{opacity:0,x:100}}
-            animate={{opacity:1, x:0}}
-            transition={{type:"spring", stiffness:100, damping:10, delay:1.2}}
-            className='absolute top-0 right-0 w-[140px] h-full bg-gradient-to-b from-primary/80 to-darkGray/80 backdrop-blur-sm z-10'>
-                <div className='w-full h-full flex flex-col justify-center items-center  gap-6'>
-                    <div className='w-[1px] h-[70px] bg-white'></div>
-                    <div className='text-white text-2xl  cursor-pointer flex flex-col gap-6 items-center justify-center'>
-                        <FaFacebook/>
-                        <FaInstagram/>
-                        <FaXTwitter/>
+            {hamburger ?
+             (<motion.div
+                initial={{x:"100%"}}
+                whileInView={{x:0}}
+                className='absolute top-0 right-0 w-[140px] h-full bg-gradient-to-b from-primary/80 to-darkGray/80 backdrop-blur-sm z-10'>
+                    <div className='w-full h-full flex flex-col justify-center items-center  gap-6'>
+                        <div className='w-[1px] h-[70px] bg-white'></div>
+                        <div className='text-white text-2xl  cursor-pointer flex flex-col gap-6 items-center justify-center'>
+                            <FaFacebook/>
+                            <FaInstagram/>
+                            <FaXTwitter/>
+                        </div>
+                        <div className='w-[1px] h-[70px] bg-white'></div>
                     </div>
-                    <div className='w-[1px] h-[70px] bg-white'></div>
-                </div>
-            </motion.div>
+                </motion.div>)
+                :
+                (null)
+            }
         </section>
     </div>
   )
