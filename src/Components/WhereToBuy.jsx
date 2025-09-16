@@ -1,45 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import worldMap from "../assets/world-map.png"
-import { toast } from 'react-toastify';
 import {motion} from 'framer-motion'
+import { AppContext } from '../Context/AppContext';
 const WhereToBuy = () => {
-  const [formData, setFormData] = useState({
-    Name: "",
-    Email: "",
-    Country: "",
-    Pincode: ""
-  });
 
-  function changeHandler(e) {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }))
-  }
-
-  function submitHandler(e){
-    e.preventDefault();
-    toast.success("Email sent successfully!", {
-      duration: 2000,
-      style: {
-        background: "#000",
-        color: "#fff", 
-        border: "1px solid #7c2d12", 
-      },
-      iconTheme: {
-        primary: "#f97316",
-        secondary: "#000",
-      },
-    });
-    console.log(formData);
-    setFormData({
-    Name: "",
-    Email: "",
-    Country: "",
-    Pincode: ""
-  });
-  }
+  const {formData,
+        changeHandler,
+        submitHandler} = useContext(AppContext);
+  
 
   return (
     <div className="container  mx-10 my-36 px-4">
