@@ -1,6 +1,6 @@
 import React from "react";
 import Creditcards from "../assets/website/credit-cards.webp";
-import { FaFacebook, FaGoogle, FaInstagram, FaPhone, FaTelegram } from "react-icons/fa";
+import { FaFacebook, FaGithub, FaGoogle, FaInstagram, FaPhone, FaTelegram } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -33,7 +33,7 @@ const Footer = () => {
             <FaPhone /> +1 (555) 123-4567
           </p>
           <p className="flex items-center gap-2">
-            <FaTelegram /> @coderscoffee
+            <FaGithub /> @SomPNG
           </p>
           <div className="flex gap-4 mt-4 text-xl">
             <a href="#" className="hover:text-white"><FaFacebook /></a>
@@ -51,7 +51,7 @@ const Footer = () => {
 
       {/* Bottom Footer */}
       <div className="border-t border-gray-700 text-center py-4 text-sm">
-        © {new Date().getFullYear()} Coder’s Coffee. All rights reserved.
+        © {new Date().getFullYear()} SomPng. All rights reserved.
       </div>
     </footer>
   );
